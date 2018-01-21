@@ -245,8 +245,13 @@ fakechroot fakeroot chroot $CHROOT_DIR \
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
 
 echo "  Copying libsndfile"
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/include/*.* /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/*.* /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/include/sndfile.h /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/include/sndfile.hh /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.a /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.la /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1.0.28 /usr/lib/R/lib
 
 #echo "  Installing fftw3."
 #curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
