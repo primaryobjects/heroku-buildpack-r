@@ -213,17 +213,17 @@ fakechroot fakeroot chroot $CHROOT_DIR \
 echo "  Installing libsndfile."
 curl https://s3.amazonaws.com/libsndfile-binary/libsndfile.tar.gz -s -O
 # make a directory to untar (like unzip) the binary
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile
+fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /app/vendor/libsndfile
 # untar the binary to the directory we want
-fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile -xvf libsndfile.tar.gz
+fakechroot fakeroot chroot $CHROOT_DIR tar -C /app/vendor/libsndfile -xvf libsndfile.tar.gz
 
 # copy files to R directory for gcc
 echo "  Copying libsndfile/include to /include"
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/include/*.* /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/include/*.* /usr/share/R/include
 echo "  Copying libsndfile/lib to /usr/lib/R/lib"
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
-#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/pkgconfig /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/bin/* /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/lib/*.* /usr/lib/R/lib
+#fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/lib/pkgconfig /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/bin/* /usr/lib/R/lib
 
 #echo "  Installing fftw3."
 #curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
