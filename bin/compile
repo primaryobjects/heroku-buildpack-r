@@ -228,10 +228,10 @@ fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/share/R
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/pkgconfig /usr/share/R/include
 fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/bin/* /usr/lib/R/lib
 
-echo "  Installing fftw3."
-curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
-fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.gz
+#echo "  Installing fftw3."
+#curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
+#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
+#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.gz
 
 #echo "  Building fftw3."
 #cd vendor
@@ -242,11 +242,19 @@ fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.g
 #cd ..
 #cd ..
 
-echo "  Copying fftw3/fftw-3.3.7/api to /include."
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw3/fftw-3.3.7/api/*.* /usr/share/R/include
+echo "  Installing libvips."
+curl https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz -s -O
+fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libvips
+fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libvips -xvf 201503311000.tar.gz
+
+#echo "  Copying fftw3/fftw-3.3.7/api to /include."
+echo "  Copying vendor/vips/include/fftw3.h to /usr/share/R/include"
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/include/fftw3.h /usr/share/R/include
+#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw3/fftw-3.3.7/api/*.* /usr/share/R/include
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw3/fftw-3.3.7/*.* /usr/lib/R/lib
-echo "  Copying /app/vendor/vips/lib/libfftw3.so to /lib."
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/vips/lib/libfftw3.so /usr/lib/R/lib
+
+echo "  Copying vendor/vips/lib/libfftw3.so to /usr/lib/R/lib"
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/lib/libfftw3.so /usr/lib/R/lib
 
 #fakechroot fakeroot chroot $CHROOT_DIR cp -a vendor/fftw3/fftw-3.3.7/. /usr/share/R/include
 
