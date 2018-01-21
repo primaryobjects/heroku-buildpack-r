@@ -210,40 +210,6 @@ fakechroot fakeroot chroot $CHROOT_DIR \
   /bin/sh -c 'cd /usr/lib && ln -sf ../lib/R/lib/libR.so libR.so'
 
 
-#echo "  Installing libsndfile."
-#curl https://s3.amazonaws.com/libsndfile-binary/libsndfile.tar.gz -s -O
-# make a directory to untar (like unzip) the binary
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile
-# untar the binary to the directory we want
-#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile -xvf libsndfile.tar.gz
-
-# copy files to R directory for gcc
-#echo "  Copying libsndfile/include to /usr/share/R/include"
-#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/include/*.* /usr/share/R/include
-#echo "  Copying libsndfile/lib to /usr/lib/R/lib"
-#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/libsndfile.so.1.0.25 /usr/lib/R/lib
-#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
-
-#echo "  Building libsndfile."
-#cd vendor/libsndfile/lib
-#gcc `pkg-config --cflags sndfile` -c somefile.c
-#cd ..
-#cd ..
-#cd ..
-#echo "  Installing libsndfile."
-#curl http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz -s -O
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile2
-#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile2 -xvf libsndfile-1.0.28.tar.gz
-#cd vendor/libsndfile2
-#./configure --prefix=/usr    \
-#            --disable-static \
-#            --docdir=/usr/share/doc/libsndfile-1.0.28 &&
-#make
-#make install
-
-#echo "  2 Copying libsndfile/lib to /usr/lib/R/lib"
-#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
-
 echo "  Copying libsndfile"
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/include/sndfile.h /usr/share/R/include
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/include/sndfile.hh /usr/share/R/include
@@ -252,32 +218,11 @@ fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.la /usr/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so /usr/lib/R/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/lib/R/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1.0.28 /usr/lib/R/lib
-
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/share
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/local/lib/R
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/local/lib/R/site-library
 
-#echo "  Installing fftw3."
-#curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
-#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.gz
-
-#echo "  Building fftw3."
-#cd vendor
-#cd fftw3
-#./configure
-#make
-#make install
-#cd ..
-#cd ..
-
-#echo "  Installing libvips."
-#curl https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz -s -O
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libvips
-#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libvips -xvf 201503311000.tar.gz
-
-#echo "  Copying fftw3/fftw-3.3.7/api to /include."
 echo "  Copying vendor/vips/include/fftw3.h to /usr/share/R/include"
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/include/fftw3.h /usr/share/R/include
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw3/fftw-3.3.7/api/*.* /usr/share/R/include
@@ -286,9 +231,6 @@ fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/include/fftw3.h /usr/
 echo "  Copying vendor/vips/lib/libfftw3.so to /usr/lib/R/lib"
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/lib/libfftw3.so /usr/lib/R/lib
 
-#fakechroot fakeroot chroot $CHROOT_DIR cp -a vendor/fftw3/fftw-3.3.7/. /usr/share/R/include
-
-#
 ###
 
 popd > /dev/null
