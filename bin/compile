@@ -234,7 +234,8 @@ fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
 fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.gz
 
 echo "  Building fftw3."
-cd vendor/fftw3
+cd vendor
+cd fftw3
 ./configure
 make
 make install
