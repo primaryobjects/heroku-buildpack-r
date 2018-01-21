@@ -244,6 +244,10 @@ fakechroot fakeroot chroot $CHROOT_DIR \
 #echo "  2 Copying libsndfile/lib to /usr/lib/R/lib"
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
 
+echo "  Copying libsndfile"
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/include/*.* /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/lib/*.* /usr/lib/R/lib
+
 #echo "  Installing fftw3."
 #curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
 #fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
