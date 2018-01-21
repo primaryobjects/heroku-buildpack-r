@@ -217,14 +217,11 @@ fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile
 # untar the binary to the directory we want
 fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile -xvf libsndfile.tar.gz
 
-# make directories to copy lib files
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/include
-#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/lib
 # copy files to R directory for gcc
-echo "  Copying libsndfile/include to /include."
+echo "  Copying libsndfile/include to /include"
 fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/include/*.* /usr/share/R/include
-echo "  Copying libsndfile/lib to /include."
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/share/R/include
+echo "  Copying libsndfile/lib to /usr/lib/R/lib"
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
 #fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/pkgconfig /usr/share/R/include
 fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/bin/* /usr/lib/R/lib
 
@@ -242,10 +239,10 @@ fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/bin/* /usr/lib/R/lib
 #cd ..
 #cd ..
 
-echo "  Installing libvips."
-curl https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz -s -O
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libvips
-fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libvips -xvf 201503311000.tar.gz
+#echo "  Installing libvips."
+#curl https://s3-eu-west-1.amazonaws.com/visup-misc/heroku-buildpack-vips/201503311000.tar.gz -s -O
+#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libvips
+#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libvips -xvf 201503311000.tar.gz
 
 #echo "  Copying fftw3/fftw-3.3.7/api to /include."
 echo "  Copying vendor/vips/include/fftw3.h to /usr/share/R/include"
