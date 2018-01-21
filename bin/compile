@@ -209,12 +209,19 @@ sed -i "s#root:x:0:0:root:/root:/bin/bash#root:x:0:0:root:/app:/bin/bash#g" etc/
 fakechroot fakeroot chroot $CHROOT_DIR \
   /bin/sh -c 'cd /usr/lib && ln -sf ../lib/R/lib/libR.so libR.so'
 
+
+curl https://s3.amazonaws.com/libsndfile-binary/libsndfile.tar.gz -s -O
+# make a directory to untar (like unzip) the binary
+fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile
+# untar the binary to the directory we want
+fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile -xvf libsndfile.tar.gz
+
 # make directories to copy lib files
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/lib
+#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/include
+#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /usr/share/R/lib
 # copy files to R directory for gcc
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/include/* /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/lib/* /usr/share/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/include/* /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/* /usr/share/R/lib
 
 
 #
