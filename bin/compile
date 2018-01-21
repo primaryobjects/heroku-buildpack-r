@@ -232,9 +232,9 @@ curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
 fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
 fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/fftw3 -xvf fftw-3.3.7.tar.gz
 
-echo "  Copying fftw3/api to /include."
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw-3.3.7/api/*.* /usr/share/R/include
-#fakechroot fakeroot chroot $CHROOT_DIR cp -a vendor/fftw-3.3.7/. /usr/share/R/include
+echo "  Copying fftw3/fftw-3.3.7/api to /include."
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/fftw3/fftw-3.3.7/api/*.* /usr/share/R/include
+#fakechroot fakeroot chroot $CHROOT_DIR cp -a vendor/fftw3/fftw-3.3.7/. /usr/share/R/include
 
 #
 ###
