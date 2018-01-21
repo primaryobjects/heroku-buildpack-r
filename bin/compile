@@ -232,19 +232,19 @@ fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/l
 #cd ..
 #cd ..
 #cd ..
-echo "  Installing libsndfile."
-curl http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz -s -O
-fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile2
-fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile2 -xvf libsndfile-1.0.28.tar.gz
-cd vendor/libsndfile2
-./configure --prefix=/usr    \
-            --disable-static \
-            --docdir=/usr/share/doc/libsndfile-1.0.28 &&
-make
-make install
+#echo "  Installing libsndfile."
+#curl http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz -s -O
+#fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile2
+#fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile2 -xvf libsndfile-1.0.28.tar.gz
+#cd vendor/libsndfile2
+#./configure --prefix=/usr    \
+#            --disable-static \
+#            --docdir=/usr/share/doc/libsndfile-1.0.28 &&
+#make
+#make install
 
-echo "  2 Copying libsndfile/lib to /usr/lib/R/lib"
-fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
+#echo "  2 Copying libsndfile/lib to /usr/lib/R/lib"
+#fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
 
 #echo "  Installing fftw3."
 #curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
