@@ -218,9 +218,10 @@ fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/libsndfile
 fakechroot fakeroot chroot $CHROOT_DIR tar -C vendor/libsndfile -xvf libsndfile.tar.gz
 
 # copy files to R directory for gcc
-echo "  Copying libsndfile/include to /include"
+echo "  Copying libsndfile/include to /usr/share/R/include"
 fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/include/*.* /usr/share/R/include
 echo "  Copying libsndfile/lib to /usr/lib/R/lib"
+fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/libsndfile.so.1.0.25 /usr/lib/R/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp vendor/libsndfile/lib/*.* /usr/lib/R/lib
 #fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/lib/pkgconfig /usr/share/R/include
 #fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/libsndfile/bin/* /usr/lib/R/lib
