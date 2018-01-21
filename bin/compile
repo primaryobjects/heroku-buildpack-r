@@ -253,6 +253,9 @@ fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so /usr/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/lib/R/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1.0.28 /usr/lib/R/lib
 
+fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/lib/libsndfile.so.1 /usr/local/lib/R
+#/usr/local/lib/R/site-library/seewave/libs
+
 #echo "  Installing fftw3."
 #curl http://www.fftw.org/fftw-3.3.7.tar.gz -s -O
 #fakechroot fakeroot chroot $CHROOT_DIR mkdir -p vendor/fftw3
