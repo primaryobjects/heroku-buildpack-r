@@ -231,11 +231,11 @@ fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/include/fftw3.h /usr/
 echo "  Copying vendor/vips/lib/libfftw3.so to /usr/lib/R/lib"
 fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/lib/libfftw3.so /usr/lib/R/lib
 
-echo "  Copying vendor/Mesa-10.1.0/include to /usr/share/R/include"
-fakechroot fakeroot chroot $CHROOT_DIR cp -r /app/vendor/Mesa-10.1.0/include /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/lib
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/local/lib/R
-fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/lib/R/lib
+#echo "  Copying vendor/Mesa-10.1.0/include to /usr/share/R/include"
+#fakechroot fakeroot chroot $CHROOT_DIR cp -r /app/vendor/Mesa-10.1.0/include /usr/share/R/include
+#fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/lib
+#fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/local/lib/R
+#fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/Mesa-10.1.0/bin/*.* /usr/lib/R/lib
 
 ###
 
