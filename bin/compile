@@ -245,12 +245,12 @@ tar -xf mesa_10.1.0.orig.tar.gz
 echo "  Copying Mesa-10.1.0 to /usr/share/R/include"
 fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/share/R/include/GL
 fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/share/R/include/GL/internal
-fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL /usr/share/R/include/GL
-fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/internal /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/internal /usr/share/R/include/GL/internal
-fakechroot fakeroot chroot $CHROOT_DIR cp -rf ./Mesa-10.1.0/include /usr/share/R
-fakechroot fakeroot chroot $CHROOT_DIR cp -rf ./Mesa-10.1.0/include /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/*.* /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/*.* /usr/share/R/include/GL
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/internal/*.* /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/internal/*.* /usr/share/R/include/GL/internal
+#fakechroot fakeroot chroot $CHROOT_DIR cp -rf ./Mesa-10.1.0/include /usr/share/R
+#fakechroot fakeroot chroot $CHROOT_DIR cp -rf ./Mesa-10.1.0/include /usr/share/R/include
 fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/local/lib/R
 fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/lib/R/lib
