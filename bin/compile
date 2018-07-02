@@ -282,8 +282,8 @@ popd > /dev/null
 # Aptfile?
 if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   APT_CACHE_DIR="/usr/share/R/cache"  #"$CACHE_DIR" #/apt/cache
-  APT_STATE_DIR="$CACHE_DIR/state" #/apt/state
-  APT_SOURCELIST_DIR="$CACHE_DIR/sources" #/apt/sources"   # place custom sources.list here
+  APT_STATE_DIR="$APT_CACHE_DIR/state" #/apt/state
+  APT_SOURCELIST_DIR="$APT_CACHE_DIR/sources" #/apt/sources"   # place custom sources.list here
 
   APT_SOURCES="$APT_SOURCELIST_DIR/sources.list"
 
