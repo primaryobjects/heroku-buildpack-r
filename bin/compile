@@ -291,7 +291,10 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   topic "Detected Aptfile changes, flushing cache"
   #fakechroot fakeroot chroot $CHROOT_DIR rm -rf $APT_CACHE_DIR
 
-  echo "mkdir -p $APT_CACHE_DIR"
+  echo "mkdir -p /apt/tmp"
+  fakechroot fakeroot chroot $CHROOT_DIR mkdir -p /apt/tmp
+
+echo "mkdir -p $APT_CACHE_DIR"
   fakechroot fakeroot chroot $CHROOT_DIR mkdir -p "$APT_CACHE_DIR"
 
   echo "mkdir -p $APT_STATE_DIR"
