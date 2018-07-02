@@ -315,10 +315,13 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   #echo "cat /etc/apt/sources.list > $APT_SOURCES"
   #fakechroot fakeroot chroot $CHROOT_DIR cat "/etc/apt/sources.list" > "$APT_SOURCES"    # no cp here
   
+  echo "echo http://cz.archive.ubuntu.com/ubuntu artful main universe >> $APT_SOURCES"
+  fakechroot fakeroot chroot $CHROOT_DIR echo "http://cz.archive.ubuntu.com/ubuntu artful main universe" >> "$APT_SOURCES"
+  
   # add custom repositories from Aptfile to sources.list
   # like>>    :repo:deb http://cz.archive.ubuntu.com/ubuntu artful main universe
   topic "Adding custom repositories"
-  fakechroot fakeroot chroot $CHROOT_DIR cat $BUILD_DIR/Aptfile | fakechroot fakeroot chroot $CHROOT_DIR grep -s -e "^:repo:" | fakechroot fakeroot chroot $CHROOT_DIR sed 's/^:repo:\(.*\)\s*$/\1/g' >> $APT_SOURCES
+  cat $BUILD_DIR/Aptfile | grep -s -e "^:repo:" | sed 's/^:repo:\(.*\)\s*$/\1/g' >> $APT_SOURCES
   
   APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
   APT_OPTIONS="$APT_OPTIONS -o dir::etc::sourcelist=$APT_SOURCES"
