@@ -242,15 +242,7 @@ wget --quiet http://archive.ubuntu.com/ubuntu/pool/main/m/mesa/mesa_10.1.0.orig.
 echo "Unpacking mesa-common-dev" | indent
 tar -xf mesa_10.1.0.orig.tar.gz
 
-echo "Building mesa"
-cd Mesa-10.1.0
-echo "Running configure" | indent
-fakechroot fakeroot chroot $CHROOT_DIR ./configure --prefix="$BUILD_DIR" >/dev/null 2>&1
-echo "Running make with target install" | indent
-fakechroot fakeroot chroot $CHROOT_DIR make install >/dev/null 2>&1
-echo "Running make with target distclean" | indent
-fakechroot fakeroot chroot $CHROOT_DIR make distclean > /dev/null 2>&1
-cd ..
+fakechroot fakeroot chroot $CHROOT_DIR sudo apt-get install mesa-common-dev
 
 echo "  Copying Mesa-10.1.0 to /usr/share/R/include"
 fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/share/R/include/GL
