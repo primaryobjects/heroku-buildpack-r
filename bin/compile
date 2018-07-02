@@ -243,7 +243,7 @@ echo "Unpacking mesa-common-dev" | indent
 tar -xf mesa_10.1.0.orig.tar.gz
 
 echo "Appending to /etc/apt/sources.list"
-echo "deb http://al.archive.ubuntu.com/ubuntu/ precise universe" | sudo tee -a /etc/apt/sources.list
+echo "deb http://al.archive.ubuntu.com/ubuntu/ precise universe" | tee -a /etc/apt/sources.list
 
 echo "Running apt-get update"
 fakechroot fakeroot chroot $CHROOT_DIR apt-get update 
