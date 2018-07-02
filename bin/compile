@@ -338,7 +338,7 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
     apt-get $APT_OPTIONS update > /dev/null
 
   fakechroot fakeroot chroot $CHROOT_DIR \
-    apt-get $APT_OPTIONS install -y $PACKAGES 2>&1 | indent
+    apt-get $APT_OPTIONS -y --force-yes -d install $PACKAGES 2>&1 | indent
 
   fakechroot fakeroot chroot $CHROOT_DIR \
     apt-get clean > /dev/null
