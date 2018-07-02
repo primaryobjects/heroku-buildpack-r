@@ -240,15 +240,14 @@ fakechroot fakeroot chroot $CHROOT_DIR cp /app/vendor/vips/lib/libfftw3.so /usr/
 echo "Downloading mesa_10.1.0.orig.tar.gz" | indent
 wget --quiet http://archive.ubuntu.com/ubuntu/pool/main/m/mesa/mesa_10.1.0.orig.tar.gz
 echo "Unpacking mesa-common-dev" | indent
-tar -xf mesa_10.1.0.orig.tar.gz
-cd Mesa-10.1.0
+tar -xf mesa_10.1.0.orig.tar.gz mesadev
 
 echo "  Copying Mesa-10.1.0 to /usr/share/R/include"
-fakechroot fakeroot chroot $CHROOT_DIR cp -r ./include /usr/share/R/include
-fakechroot fakeroot chroot $CHROOT_DIR cp -r ./include /usr/share/R
-fakechroot fakeroot chroot $CHROOT_DIR cp ./bin/*.* /usr/lib
-fakechroot fakeroot chroot $CHROOT_DIR cp ./bin/*.* /usr/local/lib/R
-fakechroot fakeroot chroot $CHROOT_DIR cp ./bin/*.* /usr/lib/R/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp -r ./mesadev/include /usr/share/R/include
+fakechroot fakeroot chroot $CHROOT_DIR cp -r ./mesadev/include /usr/share/R
+fakechroot fakeroot chroot $CHROOT_DIR cp ./mesadev/bin/*.* /usr/lib
+fakechroot fakeroot chroot $CHROOT_DIR cp ./mesadev/bin/*.* /usr/local/lib/R
+fakechroot fakeroot chroot $CHROOT_DIR cp ./mesadev/bin/*.* /usr/lib/R/lib
 
 ###
 
