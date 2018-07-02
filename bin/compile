@@ -289,11 +289,11 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   APT_SOURCES="$APT_SOURCELIST_DIR/sources.list"
 
   topic "Detected Aptfile changes, flushing cache"
-  fakechroot fakeroot chroot rm -rf $APT_CACHE_DIR
-  fakechroot fakeroot chroot mkdir -p "$APT_CACHE_DIR/archives/partial"
-  fakechroot fakeroot chroot mkdir -p "$APT_STATE_DIR/lists/partial"
-  fakechroot fakeroot chroot mkdir -p "$APT_SOURCELIST_DIR"   # make dir for sources
-  fakechroot fakeroot chroot cp -f "$BUILD_DIR/Aptfile" "$APT_CACHE_DIR/Aptfile"
+  #fakechroot fakeroot chroot rm -rf $APT_CACHE_DIR
+  #fakechroot fakeroot chroot mkdir -p "$APT_CACHE_DIR/archives/partial"
+  #fakechroot fakeroot chroot mkdir -p "$APT_STATE_DIR/lists/partial"
+  #fakechroot fakeroot chroot mkdir -p "$APT_SOURCELIST_DIR"   # make dir for sources
+  #fakechroot fakeroot chroot cp -f "$BUILD_DIR/Aptfile" "$APT_CACHE_DIR/Aptfile"
   fakechroot fakeroot chroot cat "/etc/apt/sources.list" > "$APT_SOURCES"    # no cp here
   # add custom repositories from Aptfile to sources.list
   # like>>    :repo:deb http://cz.archive.ubuntu.com/ubuntu artful main universe
