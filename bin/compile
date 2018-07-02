@@ -258,6 +258,14 @@ fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/lib
 fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/local/lib/R
 fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/bin/*.* /usr/lib/R/lib
 
+fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/local/lib/R/site-library/rgl
+fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/local/lib/R/site-library/rgl/GL
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/*.* /usr/local/lib/R/site-library/rgl
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/*.* /usr/local/lib/R/site-library/rgl/GL
+
+fakechroot fakeroot chroot $CHROOT_DIR mkdir /usr/local/lib/R/GL
+fakechroot fakeroot chroot $CHROOT_DIR cp -f ./Mesa-10.1.0/include/GL/*.* /usr/local/lib/R/GL
+
 ###
 
 popd > /dev/null
