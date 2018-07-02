@@ -317,6 +317,11 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
   APT_OPTIONS="$APT_OPTIONS -o dir::etc::sourcelist=$APT_SOURCES"
 
+  echo "Using options: $APT_OPTIONS"
+  
+  MY_SOURCES=$(cat "$APT_SOURCES")
+  echo "Using sources: $MY_SOURCES"
+  
   topic "Updating apt caches"
   fakechroot fakeroot chroot $CHROOT_DIR apt-get $APT_OPTIONS update | indent
 
