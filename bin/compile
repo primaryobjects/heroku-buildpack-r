@@ -242,11 +242,8 @@ wget --quiet http://archive.ubuntu.com/ubuntu/pool/main/m/mesa/mesa_10.1.0.orig.
 echo "Unpacking mesa-common-dev" | indent
 tar -xf mesa_10.1.0.orig.tar.gz
 
-echo "Running add-apt-repository"
-fakechroot fakeroot chroot $CHROOT_DIR add-apt-repository main
-fakechroot fakeroot chroot $CHROOT_DIR add-apt-repository universe
-fakechroot fakeroot chroot $CHROOT_DIR add-apt-repository restricted
-fakechroot fakeroot chroot $CHROOT_DIR add-apt-repository multiverse
+echo "Appending to /etc/apt/sources.list"
+echo "deb http://al.archive.ubuntu.com/ubuntu/ precise universe" | sudo tee -a /etc/apt/sources.list
 
 echo "Running apt-get update"
 fakechroot fakeroot chroot $CHROOT_DIR apt-get update 
