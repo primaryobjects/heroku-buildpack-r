@@ -289,17 +289,6 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
 
   topic "Detected Aptfile changes, flushing cache"
 
-  ###
-  #echo "mkdir -p $APT_CACHE_DIR"
-  #fakechroot fakeroot chroot $CHROOT_DIR mkdir -p "$APT_CACHE_DIR"
-
-  #echo "mkdir -p $APT_STATE_DIR"
-  #fakechroot fakeroot chroot $CHROOT_DIR mkdir -p "$APT_STATE_DIR"
-
-  #echo "mkdir -p $APT_SOURCELIST_DIR"
-  #fakechroot fakeroot chroot $CHROOT_DIR mkdir -p "$APT_SOURCELIST_DIR"
-  ###
-  
   echo "mkdir -p $APT_CACHE_DIR/archives/partial"
   fakechroot fakeroot chroot $CHROOT_DIR mkdir -p "$APT_CACHE_DIR/archives/partial"
   
@@ -314,6 +303,9 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   
   #echo "cat /etc/apt/sources.list > $APT_SOURCES"
   #fakechroot fakeroot chroot $CHROOT_DIR cat "/etc/apt/sources.list" > "$APT_SOURCES"    # no cp here
+  
+  echo "touch $APT_SOURCES"
+  fakechroot fakeroot chroot $CHROOT_DIR touch "$APT_SOURCES"
   
   echo "echo http://cz.archive.ubuntu.com/ubuntu artful main universe >> $APT_SOURCES"
   fakechroot fakeroot chroot $CHROOT_DIR echo "http://cz.archive.ubuntu.com/ubuntu artful main universe" >> "$APT_SOURCES"
