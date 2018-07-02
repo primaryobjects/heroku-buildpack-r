@@ -305,10 +305,10 @@ if [[ -f "$BUILD_DIR/Aptfile" ]]; then
   #fakechroot fakeroot chroot $CHROOT_DIR cat "/etc/apt/sources.list" > "$APT_SOURCES"    # no cp here
   
   echo "touch $APT_SOURCES"
-  fakechroot fakeroot chroot $CHROOT_DIR touch "$APT_SOURCES"
+  touch "$APT_SOURCES"
   
   echo "echo http://cz.archive.ubuntu.com/ubuntu artful main universe >> $APT_SOURCES"
-  fakechroot fakeroot chroot $CHROOT_DIR echo "http://cz.archive.ubuntu.com/ubuntu artful main universe" >> "$APT_SOURCES"
+  echo "http://cz.archive.ubuntu.com/ubuntu artful main universe" >> "$APT_SOURCES"
   
   # add custom repositories from Aptfile to sources.list
   # like>>    :repo:deb http://cz.archive.ubuntu.com/ubuntu artful main universe
